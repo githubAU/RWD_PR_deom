@@ -185,23 +185,3 @@
 }
 
 
-@media (max-width: 767.98px) { 
-    .banner-pic-bg {
-        display: none;}
-    .brand-name{
-        margin: auto;
-    }
-    #intro .banner-pic{
-        display: block;}
-    #intro .banner {
-        /* height: 120vh; */
-    }
-    #info-box{
-        text-align: center;
-    }
-
-    #info-box {
-        text-align:none;
-    }
-
- }
