@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    /* I took a deep dive into codepen to find this solution. I tried to make *some* updates to the way it is written but ended up breaking a lot more than I fixed. If I can find the creator, I'll definitely list his name here*/
+
+    .hiddenStyle {
+    position: absolute;
+    display: none;
+    /* overflow: hidden;
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 10px;
+    background: #ccc; */
+    }
+
+    </style>
+
+
+</head>
+<body>
+
+
+    <ul id="ul-list">
+        <li class="li-item">1</li>
+        <li class="li-item">2</li>
+        <li class="li-item">3</li>
+        <li class="li-item">4</li>
+        <li class="li-item">5</li>
+        <li class="li-item">6</li>
+        <li class="li-item">7</li>
+        <li class="li-item">8</li>
+        <li class="li-item">9</li>
+        <li class="li-item">10</li>
+        <li class="li-item">11</li>
+        <li class="li-item">12</li>
+        <li class="li-item">13</li>
+        <li class="li-item">14</li>
+        <li class="li-item">15</li>
+        <li class="li-item">16</li>
+        <li class="li-item">17</li>
+    </ul>
+    <input type="button" value="More" id="loadMoreButton">
+
+  
+
+   <script>
+    var ulList = document.querySelector("#ul-list");
+    var liItemArray = Array.from(ulList.querySelectorAll(".li-item"));
+    var loadMoreButton = document.getElementById("loadMoreButton");
+
+    maxItems = 4;
+    loadItems = 4;
+
+    hiddenClass = "hiddenStyle";
+    hiddenItems = Array.from(document.querySelectorAll(".hiddenStyle"));
+
+    liItemArray.forEach(function (item, index) {
+        if (index > maxItems - 1) {
+            item.classList.add(hiddenClass);
+        }
+    });
+
+    loadMoreButton.addEventListener("click", function () {
+        
+        [].forEach.call(document.querySelectorAll("." + hiddenClass), 
+        
+        function (item,index) {
+            //移除 class  hiddenStyle
+            if (index < loadItems) {
+                item.classList.remove(hiddenClass);
+                }
+            // 如果 class  hiddenStyle 的數量 是0   loadMoreButton 就隱藏
+            if (document.querySelectorAll("." + hiddenClass).length === 0) {
+                loadMoreButton.style.display = "none";
+                }
+        });
+    });
+
+   </script>
+    
+</body>
+</html>

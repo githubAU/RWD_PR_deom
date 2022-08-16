@@ -1,0 +1,127 @@
+/* 字型 */
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Noto Serif JP', serif;
+    line-height: 2;
+}
+p,a,input,label,textarea,span,ul,li,ol{
+    font-family: 'Noto Sans', sans-serif;
+    line-height: 2;
+}
+/* 清單樣態 */
+ul,li,ol,a{
+    list-style: none;
+    text-decoration: none;
+    color: black;
+}
+/* 網站底色 */
+body{
+    background-color: #F6F4F0;
+}
+
+
+/* nav 導覽列*/
+header{
+    background-color: #ffffff;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+}
+/* nav 導覽列 後方的面積*/
+.nav-bg-block {
+    height: 6rem;
+    background-color: #F1EDE8;
+}
+
+#main-nav{
+    padding: 1vw;
+}
+.navbar-brand img{
+    height: 50px;
+}
+.navbar-nav li{
+    padding: 1vw;
+}
+
+.navbar-nav li a{
+    font-family: 'Noto Serif JP', serif;
+}
+
+#navbarSupportedContent .search-btn{
+    border: none;
+}
+.dropdown-menu-box{
+    background-color: #f6f4f0;
+    border: none;
+}
+
+
+
+
+
+/* footer 頁尾*/
+footer{
+    margin: 5vw 0vw 0vw 0vw;
+    background-color: #fff;
+}
+#infomap-box{
+    padding-top: 5vw;
+}
+
+#infomap-box li{
+    margin: 1vw;
+}
+#info-box{
+    text-align: left;
+    margin-bottom: 2vw;
+}
+.info-text{
+    font-size: 0.5vw;
+    font-weight: 100;
+    letter-spacing: 0.2vw;
+    line-height: 1.5vw;
+}
+.brand-info-box img{  
+    height: 30px;
+}
+.brand-info-text {
+    vertical-align: bottom;
+}
+.info-text p {
+    margin-top: 2vw;
+    line-height: 2;
+}
+#map-box{
+    margin-top: 1vw;
+    
+}
+.directory-columns{
+    flex-wrap: wrap;
+    display: flex;
+    /* justify-content: center; */
+}
+
+.directory-column-section-title{
+    font-size: 12px;
+}
+.directory-column-section-list{
+    font-size: 10px;
+    font-weight: 100;
+    padding: 0; 
+}
+
+/* footer > copyroght 權利 */
+#copyright{
+    font-size: 9px;
+    font-weight: 100;
+    padding: 1vw;
+    background-color: #ffffff;
+    margin-top: 2vw;
+}
+
+
+
+
+
+
+

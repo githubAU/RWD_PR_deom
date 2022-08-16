@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes</title>
+    <!-- bootstrap -->
+    <!-- CSS only 載入Bootstrap的CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    <!-- font 載入字型 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- 標題subtitle font: Noto Sans -->
+    <!-- 內文text font: Noto Serif JP -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400;500;600;700;800;900&family=Noto+Serif+JP:wght@200;300;400;500;600;700;900&display=swap" rel="stylesheet">
+
+    <!-- 載入我的CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+
+
+    <!-- JavaScript 載入JS檔案 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- JavaScript Bundle with Popper 載入Bootstrap的JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+
+    <style>
+
+    .slider-banner{
+    position: relative;
+    }
+    
+    /* 照片展示區 */
+    .slideshow-container {
+    position: relative;
+    margin: auto;
+    max-height: 45vw;
+    overflow: hidden;
+    }
+
+    /* 照片 */
+    .mySlides {
+    display: none;
+    }
+
+    /* 照片內文字 */
+    .banner-text {
+    /* color: #fff; */
+    font-size: 5vw;
+    font-weight: 900;
+    /* padding: 8px 12px; */
+    color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 20%;
+    width: 100%;
+    text-align: center;
+    font-family: 'Noto Serif JP', serif;
+    }
+    
+    /* 箭頭外觀 */
+    .prev, .next {
+    /* cursor: pointer; */
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -5%;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 2rem;
+    transition: 0.6s ease;
+    user-select: none;
+    }
+
+
+    /* 箭頭位置 */
+    .next {
+    right: 5vw;
+    /* border-radius: 3px 0 0 3px; */
+    }
+    .prev {
+    left: 5vw;
+    /* border-radius: 0 3px 3px 0; */
+    }
+    
+    /* 箭頭摸到反黑 */
+    .prev:hover, .next:hover {
+    color: #ccc;
+    }
+
+   
+    
+    /* 點點區域 */
+    .selectorDots{
+        /* margin: 2vw auto; */
+        margin-top: -7vw;
+        z-index: 2;
+    }
+    /* 點點的外觀 */
+    .dot {
+        cursor: pointer;
+        height: 10px;
+        width: 10px;
+        margin: 0 15px;
+        background-color: rgb(255, 255, 255);
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+    }
+    /* 點點摸到變色 */
+    .active, .dot:hover {
+        background-color: #ccc;
+    }
+
+    /* 動畫效果 */
+    .fading {
+        animation-name: fading;
+        animation-duration: 1.5s;
+    }
+    
+    @keyframes fading {
+        from {opacity: .4}
+        to {opacity: 1}
+    }
+
+    /* ----------------------- */
+
+    /* 商品陳列 */
+
+    .recipes-show{
+        margin-top: 1vw;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    .clearfix:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+    .wrap {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1em;
+    }
+
+    .recipe-list{
+        padding-right: 32px;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 0vw;
+    }
+    .recipe-title {
+        /* font-size: 20px; */
+        /* font-weight: 600; */
+        /* padding-bottom: 1em; */
+    }
+
+    .recipe-item{
+        /* float: left;
+        width: 29.33333%;
+        margin: 2%; */
+
+        width: 33%;
+        /* flex-wrap: wrap; */
+        margin: auto;
+        padding: 1vw;
+    }
+
+    /* 圖卡 */
+    .user-poster{
+        text-align: right;
+    }
+    /* 超連結選到不變藍 */
+    .recipe-link-btn:hover{
+        color: rgb(0, 0, 0);
+    }
+    .recipe-poster-link:hover{
+        color: rgb(0, 0, 0);
+    }
+
+
+    /* more 外觀 */
+    .MoreButtonBox{
+        text-align: center;
+    }
+    #loadMoreButton{
+        /* letter-spacing: 1vw; */
+        border: none;
+        color: #fff;
+        background-color: rgb(0, 0, 0);
+        text-align: center;
+        width: 20vw;
+        cursor: pointer;
+    }
+
+
+    
+
+
+    @media(max-width:768px) {
+        .recipe-item{
+        width: 46%;/*50%記得扣除768px以上的左右margin共4%*/
+        }
+    }
+
+    @media(max-width:569px) {
+        .recipe-item {
+        width: 96%;/*100%記得扣除768px以上的左右margin共4%*/
+        }
+    }
+
+        /* -------------------- */
+        /* 隱藏 */
+        .hiddenStyle {
+        /* position: absolute; */
+        display: none;
+        }
+
+    
+    
+        </style>
+</head>
+<body>
+    <div class="nav-bg-block"></div>
+    <header>
+        <nav class="navbar navbar-expand-lg" id="main-nav">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="./index.html">
+                <img src="./logo/logo_PR_72ppi.png" alt="">
+              </a>
+              <!-- 漢堡按鈕 -->
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <!-- 桌機nav清單 -->
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="./recipes.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Recipes
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-box">
+                          <!-- <li><a class="dropdown-item" href="./inspiration.html">Inspiration</a></li>
+                          <hr> -->
+                          <li><a class="dropdown-item" href="./recipes.html">Meat</a></li>
+                          <li><a class="dropdown-item" href="./recipes.html">Seafood</a></li>
+                          <li><a class="dropdown-item" href="./recipes.html">Vegan</a></li>
+                          <li><a class="dropdown-item" href="./recipes.html">Drink</a></li>
+                          <li><a class="dropdown-item" href="./recipes.html">Dessert</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="./inspiration.html">Inspiration</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./blog.html">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./ourkitchen.html">Our Kitchen</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="shop.html">Shop</a>
+                    </li>
+                    <!-- <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="shop_items.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Shop
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-box">
+                      <li><a class="dropdown-item" href="shop.html">All</a></li>
+                      <hr>
+                      <li><a class="dropdown-item" href="shop_items.html">Kitchenware</a></li>
+                      <li><a class="dropdown-item" href="shop_items.html">Meal Box</a></li>
+                      <li><a class="dropdown-item" href="shop_items.html">Book</a></li>
+                      <li><a class="dropdown-item" href="shop_items.html">Forzen Food</a></li>
+                    </ul>
+                    </li> -->
+                </ul>
+                <!-- 搜尋列 -->
+                <form class="d-flex search-bar" role="search">
+                  <input class="form-control m-2" type="search" placeholder="search your recipes..." aria-label="Search">
+                  <button class="btn search-btn" type="submit">Search</button>
+                </form>
+              </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="slider-banner">
+        <div class="text-center"><!-- container -->
+            <div class="row">
+                <div class="slideshow-container">
+                    <div class="mySlides fading">
+                        <img src="./img/page/page_recipe/recipe_bannerA.jpg" style="width:100%">
+                        <div class="banner-text">Meat</div>
+                    </div>
+                    <div class="mySlides fading">
+                        <img src="./img/page/page_recipe/recipe_bannerA.jpg" style="width:100%">
+                        <div class="banner-text">Seafood</div>
+                    </div>
+                    <div class="mySlides fading">
+                        <img src="./img/page/page_recipe/recipe_bannerA.jpg" style="width:100%">
+                        <div class="banner-text">Vegetarian</div>
+                    </div>
+                    <div class="mySlides fading">
+                        <img src="./img/page/page_recipe/recipe_bannerA.jpg" style="width:100%">
+                        <div class="banner-text">Dessert</div>
+                    </div>
+                    <div class="mySlides fading">
+                        <img src="./img/page/page_recipe/recipe_bannerA.jpg" style="width:100%">
+                        <div class="banner-text">Drink</div>
+                    </div>
+                    <a class="prev" onclick="plusSlides(-1)">❮</a>
+                    <a class="next" onclick="plusSlides(1)">❯</a>
+                </div>
+                <div class="text-center selectorDots">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                    <span class="dot" onclick="currentSlide(5)"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="recipes-show">
+        <div class="wrap">
+            <div class="content">
+                <ul class="recipe-list clearfix">
+                    <li class="recipe-item">
+                        <img src="./img/page/homepage/Garlic_Butter_Steak_500X500.jpg" alt="">    
+                        <a class="recipe-link-btn" href="">
+                            <h3 class="recipe-title">title</h3>
+                        </a>
+                        <a class="recipe-poster-link" href="">
+                            <p class="user-poster">PR Studio</p>
+                        </a>        
+                    </li>
+                    <li class="recipe-item">
+                        <img src="./img/page/homepage/Garlic_Butter_Steak_500X500.jpg" alt="">    
+                        <a class="recipe-link-btn" href="">
+                            <h3 class="recipe-title">title</h3>
+                        </a>
+                        <a class="recipe-poster-link" href="">
+                            <p class="user-poster">PR Studio</p>
+                        </a>        
+                    </li>
+                    <li class="recipe-item">
+                        <img src="./img/page/homepage/Garlic_Butter_Steak_500X500.jpg" alt="">    
+                        <a class="recipe-link-btn" href="">
+                            <h3 class="recipe-title">title</h3>
+                        </a>
+                        <a class="recipe-poster-link" href="">
+                            <p class="user-poster">PR Studio</p>
+                        </a>        
+                    </li>
+                    <li class="recipe-item">
+                        <img src="./img/page/homepage/Garlic_Butter_Steak_500X500.jpg" alt="">    
+                        <a class="recipe-link-btn" href="">
+                            <h3 class="recipe-title">title</h3>
+                        </a>
+                        <a class="recipe-poster-link" href="">
+                            <p class="user-poster">PR Studio</p>
+                        </a>        
+                    </li>
+                    <li class="recipe-item">
+                        <img src="./img/page/homepage/Garlic_Butter_Steak_500X500.jpg" alt="">    
+                        <a class="recipe-link-btn" href="">
+                            <h3 class="recipe-title">title</h3>
+                        </a>
+                        <a class="recipe-poster-link" href="">
+                            <p class="user-poster">PR Studio</p>
+                        </a>        
+                    </li>
+                    <li class="recipe-item">
+                        <img src="./img/page/homepage/Garlic_Butter_Steak_500X500.jpg" alt="">    
+                        <a class="recipe-link-btn" href="">
+                            <h3 class="recipe-title">title</h3>
+                        </a>
+                        <a class="recipe-poster-link" href="">
+                            <p class="user-poster">PR Studio</p>
+                        </a>        
+                    </li>
+                    <li class="recipe-item">
+                        <img src="./img/page/homepage/Garlic_Butter_Steak_500X500.jpg" alt="">    
+                        <a class="recipe-link-btn" href="">
+                            <h3 class="recipe-title">title</h3>
+                        </a>
+                        <a class="recipe-poster-link" href="">
+                            <p class="user-poster">PR Studio</p>
+                        </a>        
+                    </li>
+                    <li class="recipe-item">
+                        <img src="./img/page/homepage/Garlic_Butter_Steak_500X500.jpg" alt="">    
+                        <a class="recipe-link-btn" href="">
+                            <h3 class="recipe-title">title</h3>
+                        </a>
+                        <a class="recipe-poster-link" href="">
+                            <p class="user-poster">PR Studio</p>
+                        </a>        
+                    </li>
+                    <li class="recipe-item">
+                        <img src="./img/page/homepage/Garlic_Butter_Steak_500X500.jpg" alt="">    
+                        <a class="recipe-link-btn" href="">
+                            <h3 class="recipe-title">title</h3>
+                        </a>
+                        <a class="recipe-poster-link" href="">
+                            <p class="user-poster">PR Studio</p>
+                        </a>        
+                    </li>
+                </ul>
+                <div class="MoreButtonBox">
+                    <input type="button" value="- More -" id="loadMoreButton">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer> 
+        <div class="container text-center">
+            <div class="row" id="infomap-box">
+                <div class="col-md-6" id="info-box">
+                     <div class="brand-info info-text"> 
+                        <div class="brand-info-box">
+                            <a class="brand-info-logolink" href="./index.html" title="Pocket Recipe 首頁">
+                                <img src="./logo/logo_PR_72ppi.png" alt="商標">
+                            </a>          
+                            <span class="brand-info-text ">POCKET RECIPE</span>
+                        </div>
+                        <p>71 Gillies St, Fairfield VIC 3078, Australia<br>
+                         Monday to Friday 7am to 5pm<br>
+                         1234 567 890<br>
+                        </p>
+                        <a id="infoemail" href="mealto:info@pocketrecipe.com.au">info@pocketrecipe.com.au</a>
+                    </div>
+                </div>
+                <nav class="col-md-6" id="map-box">
+                    <div class="directory-columns justify-content-evenly">
+                        <div class="irectory-column">
+                            <div class="directory-column-section">
+                                <h3 class="directory-column-section-title">Recipes</h3>
+                                <ul class="directory-column-section-list">
+                                    <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="#">Meat</a>
+                                    </li>
+                                    <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="#">Seafood</a>
+                                    </li>
+                                    <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="#">Vegan</a>
+                                    </li>
+                                    <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="#">Drink</a>
+                                    </li>
+                                    <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="#">Dessert</a>
+                                    </li>
+    
+                                </ul>
+                            </div>
+                            <div class="directory-column-section">
+                                <h3 class="directory-column-section-title">Inspiration</h3>
+                                <ul class="directory-column-section-list">
+                                    <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="#">Daily Recipes</a>
+                                    </li>
+                                    <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="#">Tools</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="irectory-column">
+                            <div class="directory-column-section">
+                                <h3 class="directory-column-section-title">Our Kitchen</h3>
+                                <ul class="directory-column-section-list">
+                                    <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="#">Reservation</a>
+                                    </li>
+                                    <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="#">Events</a>
+                                    </li>
+                                    <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="#">Addrees</a>
+                                    </li>
+                                </ul>
+    
+                            </div>
+                            <div class="directory-column-section">
+                                <h3 class="directory-column-section-title">Blog</h3>
+                                <ul class="directory-column-section-list">
+                                    <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="#">Food News</a>
+                                    </li>
+                                    <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="#">Podcast</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="irectory-column">
+                            <div class="directory-column-section">
+                                <h3 class="directory-column-section-title">Shop</h3>
+                                <ul class="directory-column-section-list">
+                                    <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="#">Kitchenware</a>
+                                    </li>
+                                    <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="#">Meal Box</a>
+                                    </li>
+                                    <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="#">Book</a>
+                                    </li>
+                                    <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="#">Forzen Food</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="directory-column-section">
+                                <h3 class="directory-column-section-title">Account</h3>
+                                <ul class="directory-column-section-list">
+                                    <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="./account-login.html">Login/Register</a>
+                                    </li>
+                                    <!-- 可以刪除 -->
+                                    <!-- <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="./account-register.html">Register</a>
+                                    </li> -->
+                                    <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="#">Manage Account</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>  
+        </div> 
+        <div class="row text-center" id="copyright">
+            <span >© 2011-2022 POCKET RECIPE, Inc.</span>
+            <span>Designed By Anters'D Studio</span>
+        </div>
+    </footer>
+
+    <script>
+    // 橫幅輪播 
+    //命名一個代表序位的變數
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    //點擊箭頭 照片序位+1 或序位-1 點擊時+1 -1設定到HTML上  但無限制 
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+    //點點序位=照片序位 點點序位設定到HTML上
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    //設定顯示跟滑動的限制
+    function showSlides(n) {
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        let i;
+
+        //如果滑動 序位最後一張 再次被+1 回到第一張
+        if (n > slides.length) {
+            slideIndex = 1
+        }
+        //如果 滑動 序位1 再次被-1 回到最後一張
+        if (n < 1) {
+            slideIndex = slides.length
+        }
+
+        
+        //照片點到就消失
+        for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+        }
+        //點點 選到就消失
+        for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+        }
+        // 圖案 不消失 序位[常數-1]照片們 css樣式變為顯示
+        slides[slideIndex-1].style.display = "block";
+
+        // 點點 不消失
+        dots[slideIndex-1].className += " active";
+    }
+    </script>
+
+    <script>
+        // see more 程式
+        var ulList = document.querySelector(".recipe-list");
+        var liItemArray = Array.from(ulList.querySelectorAll(".recipe-item"));
+        var loadMoreButton = document.getElementById("loadMoreButton");
+
+        maxItems = 6;
+        loadItems = 6;
+
+        hiddenClass = "hiddenStyle";
+        hiddenItems = Array.from(document.querySelectorAll(".hiddenStyle"));
+
+        liItemArray.forEach(function (item, index) {
+            if (index > maxItems - 1) {
+                item.classList.add(hiddenClass);
+            }
+        });
+
+        loadMoreButton.addEventListener("click", function () {
+            
+            [].forEach.call(document.querySelectorAll("." + hiddenClass), 
+            
+            function (item,index) {
+                //移除 class  hiddenStyle
+                if (index < loadItems) {
+                    item.classList.remove(hiddenClass);
+                    }
+                // 如果 class  hiddenStyle 的數量 是0   loadMoreButton 就隱藏
+                if (document.querySelectorAll("." + hiddenClass).length === 0) {
+                    loadMoreButton.style.display = "none";
+                    }
+            });
+        });
+    </script>
+
+</body>
+</html>

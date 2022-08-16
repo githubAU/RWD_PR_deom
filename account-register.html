@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account</title>
+
+    <!-- bootstrap -->
+    <!-- CSS only 載入Bootstrap的CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    <!-- font 載入字型 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- 標題subtitle font: Noto Sans -->
+    <!-- 內文text font: Noto Serif JP -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400;500;600;700;800;900&family=Noto+Serif+JP:wght@200;300;400;500;600;700;900&display=swap" rel="stylesheet">
+
+    <!-- 載入我的CSS -->
+    <!-- 載入主要CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- 載入該頁CSS -->
+    <link rel="stylesheet" href="./css/account.css">
+
+    
+
+
+    <!-- JavaScript 載入JS檔案 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- JavaScript Bundle with Popper 載入Bootstrap的JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+    <!-- 載入我的JS檔案 -->
+    <!-- <script src="./js/main.js"></script> -->
+
+
+    <style>
+
+        /* 登入頁面不顯示 */
+        .login-pages{
+            display: none;
+        }
+
+        /* 註冊頁面顯示 */
+        .register-pages{
+            display: block;
+        }
+        
+        /* input 選取格不顯示 */
+        .logrg-toggler{
+            display: none;
+        }
+
+
+    </style>
+
+
+
+
+</head>
+<body>
+    <div class="nav-bg-block"></div>
+    <header>
+        <nav class="navbar navbar-expand-lg" id="main-nav">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="./index.html">
+                <img src="./logo/logo_PR_72ppi.png" alt="">
+              </a>
+              <!-- 漢堡按鈕 -->
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <!-- 桌機nav清單 -->
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="./recipes.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Recipes
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-box">
+                          <!-- <li><a class="dropdown-item" href="./inspiration.html">Inspiration</a></li>
+                          <hr> -->
+                          <li><a class="dropdown-item" href="./recipes.html">Meat</a></li>
+                          <li><a class="dropdown-item" href="./recipes.html">Seafood</a></li>
+                          <li><a class="dropdown-item" href="./recipes.html">Vegan</a></li>
+                          <li><a class="dropdown-item" href="./recipes.html">Drink</a></li>
+                          <li><a class="dropdown-item" href="./recipes.html">Dessert</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="./inspiration.html">Inspiration</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./blog.html">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./ourkitchen.html">Our Kitchen</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="shop.html">Shop</a>
+                    </li>
+                    <!-- <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="shop_items.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Shop
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-box">
+                      <li><a class="dropdown-item" href="shop.html">All</a></li>
+                      <hr>
+                      <li><a class="dropdown-item" href="shop_items.html">Kitchenware</a></li>
+                      <li><a class="dropdown-item" href="shop_items.html">Meal Box</a></li>
+                      <li><a class="dropdown-item" href="shop_items.html">Book</a></li>
+                      <li><a class="dropdown-item" href="shop_items.html">Forzen Food</a></li>
+                    </ul>
+                    </li> -->
+                </ul>
+                <!-- 搜尋列 -->
+                <form class="d-flex search-bar" role="search">
+                  <input class="form-control m-2" type="search" placeholder="search your recipes..." aria-label="Search">
+                  <button class="btn search-btn" type="submit">Search</button>
+                </form>
+              </div>
+            </div>
+        </nav>
+    </header>
+    <section>
+        <div class="container justify-content-center text-center container-account">
+            <div class="row login-pages" id="login-pages" >
+                <h2>Login Your PR ID</h2>
+                <div class="col-md">
+                    <div id="login-page">
+                        <form id="user" action="#">
+                            <fieldset >
+                                <div>
+                                    <input type="email" name="email" placeholder="name@example.com" autofocus>
+                                </div>
+                                <div>
+                                    <input type="password" name="password" placeholder="Password">
+                                </div>
+                            </fieldset>                           
+                            <input type="button" value="Login">
+                            <p>Creat your RP ID.
+                                <label for="check-register">Register</label>
+                                <input type="radio" name="logReg" class="logrg-toggler" id="check-register"> 
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row register-pages" id="register-pages">
+                <h2>Create Your PR ID</h2>
+                <div class="col-md">
+                    <div id="register-page">
+                        <form id="user-new" action="#">
+                            <fieldset>
+                                <div>
+                                    <input type="email" name="email" placeholder="name@example.com" autofocus>
+                                    <p>This will be your new PR ID.</p>
+                                </div>
+                                <div>
+                                    <input type="password" name="password" placeholder="Password">
+                                </div>
+                                <div>
+                                    <input type="password" name="password" id="confirm-pw-box" placeholder="Confirm Password">
+                                </div>
+                                <input type="date" id="birthday-box" min="1900-01-01" max="2022-01-01" placeholder="Birthday">
+                            </fieldset>
+                            <fieldset id="form-gender">
+                                <input type="radio" id="male" value="male" name="gender">
+                                <label for="male">Male</label>
+                                <input type="radio" id="fmale" value="fmale" name="gender">
+                                <label for="fmale">Fmale</label>
+                                <input type="radio" id="nonbinary" value="nonbinary" name="gender">
+                                <label for="nonbinary">Nonbinary</label>
+                            </fieldset>
+                            <fieldset id="form-terms">
+                                <input type="checkbox" name="terms" id="terms">
+                                <label for="terms">Click to accept<a href="#">our terms</a></label>
+                            </fieldset>
+                            <input type="button" value="Register" >
+                            <p>Have a RP ID?
+                                <label for="check-login">Login</label>
+                                <input type="radio" name="logReg" class="logrg-toggler"  id="check-login">
+                            </p>
+                        </form>                        
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </section>
+    <footer> 
+        <div class="container text-center">
+            <div class="row" id="infomap-box">
+                <div class="col-md-6" id="info-box">
+                     <div class="brand-info info-text"> 
+                        <div class="brand-info-box">
+                            <a class="brand-info-logolink" href="./index.html" title="Pocket Recipe 首頁">
+                                <img src="./logo/logo_PR_72ppi.png" alt="商標">
+                            </a>          
+                            <span class="brand-info-text ">POCKET RECIPE</span>
+                        </div>
+                        <p>71 Gillies St, Fairfield VIC 3078, Australia<br>
+                         Monday to Friday 7am to 5pm<br>
+                         1234 567 890<br>
+                        </p>
+                        <a id="infoemail" href="mealto:info@pocketrecipe.com.au">info@pocketrecipe.com.au</a>
+                    </div>
+                </div>
+                <nav class="col-md-6" id="map-box">
+                    <div class="directory-columns justify-content-evenly">
+                        <div class="irectory-column">
+                            <div class="directory-column-section">
+                                <h3 class="directory-column-section-title">Recipes</h3>
+                                <ul class="directory-column-section-list">
+                                    <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="#">Meat</a>
+                                    </li>
+                                    <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="#">Seafood</a>
+                                    </li>
+                                    <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="#">Vegan</a>
+                                    </li>
+                                    <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="#">Drink</a>
+                                    </li>
+                                    <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="#">Dessert</a>
+                                    </li>
+    
+                                </ul>
+                            </div>
+                            <div class="directory-column-section">
+                                <h3 class="directory-column-section-title">Inspiration</h3>
+                                <ul class="directory-column-section-list">
+                                    <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="#">Daily Recipes</a>
+                                    </li>
+                                    <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="#">Tools</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="irectory-column">
+                            <div class="directory-column-section">
+                                <h3 class="directory-column-section-title">Our Kitchen</h3>
+                                <ul class="directory-column-section-list">
+                                    <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="#">Reservation</a>
+                                    </li>
+                                    <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="#">Events</a>
+                                    </li>
+                                    <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="#">Addrees</a>
+                                    </li>
+                                </ul>
+    
+                            </div>
+                            <div class="directory-column-section">
+                                <h3 class="directory-column-section-title">Blog</h3>
+                                <ul class="directory-column-section-list">
+                                    <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="#">Food News</a>
+                                    </li>
+                                    <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="#">Podcast</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="irectory-column">
+                            <div class="directory-column-section">
+                                <h3 class="directory-column-section-title">Shop</h3>
+                                <ul class="directory-column-section-list">
+                                    <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="#">Kitchenware</a>
+                                    </li>
+                                    <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="#">Meal Box</a>
+                                    </li>
+                                    <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="#">Book</a>
+                                    </li>
+                                    <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="#">Forzen Food</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="directory-column-section">
+                                <h3 class="directory-column-section-title">Account</h3>
+                                <ul class="directory-column-section-list">
+                                    <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="./account-login.html">Login</a>
+                                    </li>
+                                    <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="./account-register.html">Register</a>
+                                    </li>
+                                    <li class="directory-column-section-itme">
+                                        <a class="directory-column-section-link" href="#">Manage Account</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>  
+        </div> 
+        <div class="row text-center" id="copyright">
+            <span >© 2011-2022 POCKET RECIPE, Inc.</span>
+            <span>Designed By Anters'D Studio</span>
+        </div>
+    </footer>
+    <script>
+        document.getElementById("check-login").onclick = function() {
+        document.getElementById("register-pages").style.display = "none";
+        document.getElementById("login-pages").style.display = "block";
+        }
+        
+        document.getElementById("check-register").onclick = function() {
+            document.getElementById("register-pages").style.display = "block";
+            document.getElementById("login-pages").style.display = "none";
+        }
+    </script>
+</body>
+</html>
